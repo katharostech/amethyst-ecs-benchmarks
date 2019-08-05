@@ -1,4 +1,4 @@
-use nalgebra::{Isometry3, Vector3, Matrix4};
+use nalgebra::{Isometry3, Matrix4, Vector3};
 use specs::{Component, VecStorage};
 
 #[derive(Debug)]

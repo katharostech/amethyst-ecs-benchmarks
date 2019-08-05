@@ -1,14 +1,13 @@
 #![feature(test)]
 extern crate test;
-use test::Bencher;
 use amethyst_ecs_benchmarks::components::*;
+use test::Bencher;
 
 use legion::prelude::*;
 
 #[bench]
 pub fn iter_transforms(b: &mut Bencher) {
     b.iter(|| {
-        // create world
         let universe = Universe::new(None);
         let mut world = universe.create_world();
 

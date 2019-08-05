@@ -1,7 +1,7 @@
 #![feature(test)]
 extern crate test;
-use test::Bencher;
 use amethyst_ecs_benchmarks::components::*;
+use test::Bencher;
 
 use specs::prelude::*;
 
