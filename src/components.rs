@@ -21,3 +21,11 @@ impl Default for Transform {
 impl Component for Transform {
     type Storage = VecStorage<Self>;
 }
+
+pub struct LegionParent {
+    pub parent: legion::Entity,
+}
+
+pub struct SpecsParent {
+    pub specs: specs::Entity,
+}

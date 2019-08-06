@@ -1,16 +1,26 @@
-#![feature(test)]
-extern crate test;
-use amethyst_ecs_benchmarks::components::*;
-use test::Bencher;
+include!("./common/includes.rs");
 
 use legion::prelude::*;
 
-#[bench]
-pub fn iter_transforms(b: &mut Bencher) {
-    b.iter(|| {
+fn bench_create_transforms(c: &mut Criterion) {
+    let prepare = || {
         let universe = Universe::new(None);
-        let mut world = universe.create_world();
+        universe.create_world()
+    };
+    let run1000 = |mut world: World| {
+        world.insert_from((), (0..=1000).map(|_| (Transform::default(),)));
+    };
+    let run10000 = |mut world: World| {
+        world.insert_from((), (0..=10000).map(|_| (Transform::default(),)));
+    };
 
-        world.insert_from((), (0..=100).map(|_| (Transform::default(),)));
-    })
+    c.bench_function("legion create_transforms 1000", move |b| {
+        b.iter_batched(prepare, run1000, BatchSize::SmallInput);
+    });
+    c.bench_function("legion create_transforms 10000", move |b| {
+        b.iter_batched(prepare, run10000, BatchSize::SmallInput);
+    });
 }
+
+criterion_group!(benches, bench_create_transforms);
+criterion_main!(benches);

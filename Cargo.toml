@@ -10,6 +10,7 @@ edition = "2018"
 specs = { git = "https://github.com/slide-rs/specs.git" }
 legion = { git = "https://github.com/katharostech/legion.git", branch = "ktech-updates", features = ["blanket-impl-comp"] }
 nalgebra = "*"
+rayon = "*"
 
 # Profiling
 flame = { git = "https://github.com/TyOverby/flame.git" }
@@ -19,3 +20,14 @@ flamer = "*"
 slog = { version = "2.4", features = ["max_level_trace", "release_max_level_info", "nested-values"] }
 slog-term = "2"
 slog-async = "2"
+
+# Benchmarking
+criterion = "0.2"
+
+[[bench]]
+name = "legion"
+harness = false
+
+[[bench]]
+name = "specs"
+harness = false
