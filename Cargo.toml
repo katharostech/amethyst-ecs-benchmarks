@@ -7,10 +7,12 @@ edition = "2018"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-specs = { git = "https://github.com/slide-rs/specs.git" }
 legion = { git = "https://github.com/katharostech/legion.git", branch = "ktech-updates", features = ["blanket-impl-comp"] }
 nalgebra = "*"
 rayon = "*"
+
+specs-hierarchy = "0.5.1"
+amethyst_core = { git = "https://github.com/amethyst/amethyst", features = ["nightly"] }
 
 # Profiling
 flame = { git = "https://github.com/TyOverby/flame.git" }

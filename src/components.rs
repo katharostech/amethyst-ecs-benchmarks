@@ -1,5 +1,5 @@
 use nalgebra::{Isometry3, Matrix4, Vector3};
-use specs::{Component, VecStorage};
+use amethyst_core::ecs::{Component, VecStorage};
 
 #[derive(Debug)]
 pub struct Transform {
@@ -27,5 +27,8 @@ pub struct LegionParent {
 }
 
 pub struct SpecsParent {
-    pub specs: specs::Entity,
+    pub specs: amethyst_core::ecs::Entity,
+}
+impl Component for SpecsParent {
+    type Storage = VecStorage<Self>;
 }
